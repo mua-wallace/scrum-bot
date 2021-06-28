@@ -4,8 +4,8 @@ import { validationResult } from 'express-validator'
 
 
 export default {
+    // login into 
     login: (req, res) => {
-       // res.json({username: req.body.username, password: req.body.password});
        let user = Object.assign({}, req.user)._doc;
        delete user.password;
        res.json(user); 

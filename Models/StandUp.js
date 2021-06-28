@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
+// standup schema
 const StandUpSchema = new Schema({
     name: {
         type: String,

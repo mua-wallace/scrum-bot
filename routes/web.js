@@ -1,4 +1,4 @@
-
+// various imports (modules and files)
 import { Router } from 'express'
 import publicController from '../Controllers/PublicController.js'
 import standUpController from '../Controllers/StandUpController.js'
@@ -10,7 +10,7 @@ import { body } from 'express-validator'
 const router = Router()
 const authMiddleware = auth.authenticate('basic', { session: false });
 
-
+// various routes
 router.get('/', publicController.welcome);
 router.post('/standups/new', [
     body('standup').isObject(),

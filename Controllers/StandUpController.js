@@ -26,7 +26,7 @@ class StandUpController {
       const id = req.params.id;
       StandUp.findByIdAndDelete(id)
         .then(() => {res.json('Standup  Successfully Deleted')})
-        .catch(() => {res.status(404).json('No such standup exist')});
+         .catch(() => {res.status(404).json('No such standup exist')});
     }
 
     // standup list

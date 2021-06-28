@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 
 const Schema = mongoose.Schema
-
+// User schema
 const UserSchema = new Schema({
     username: {
         type: String,
@@ -50,6 +50,7 @@ const UserSchema = new Schema({
 });
 
 
+// password validation
 UserSchema.methods.validatePassword = function (password) {
     console.log(this.password)
     console.log(password);
