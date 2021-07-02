@@ -16,9 +16,10 @@ router.post('/standups/new', [
     body('standup').isObject(),
     authMiddleware
 ], standUpController.createNewStandUp);
-router.delete('/standup/:id',[] , standUpController.deleteStandUp);
+router.post('/standups/delete', standUpController.deleteStandUp);
 router.get('/standups', authMiddleware, standUpController.standUpList);
 router.get('/standups/responses', authMiddleware, standUpController.standUpResponses);
+
 router.post('/standups/subcribe', [
     body('standup_id').isString(),
     authMiddleware

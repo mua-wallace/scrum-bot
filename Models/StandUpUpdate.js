@@ -1,7 +1,6 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
-// update schema
 const StandUpUpdateSchema = new Schema({
     standup_id: {
         type: String,

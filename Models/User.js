@@ -49,7 +49,6 @@ const UserSchema = new Schema({
 
 });
 
-
 // password validation
 UserSchema.methods.validatePassword = function (password) {
     console.log(this.password)

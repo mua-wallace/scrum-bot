@@ -4,10 +4,9 @@ import User from '../Models/User.js'
 import { validationResult } from 'express-validator';
 
 
-// Standup controller Class
+
 class StandUpController {
 
-    // create a new standup
     createNewStandUp (req, res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -18,25 +17,23 @@ class StandUpController {
         }).catch((error) => {
             res.json({ standup: { message: "There was an error creating new StandUp", errorDetails: error } });
         });
-
-    }
-    
-    // delete a stabdup 
-    async deleteStandUp (req, res) {
-      const id = req.params.id;
-      StandUp.findByIdAndDelete(id)
-        .then(() => {res.json('Standup  Successfully Deleted')})
-         .catch(() => {res.status(404).json('No such standup exist')});
     }
 
-    // standup list
-    async standUpList (req, res) {
-        let standUps = await StandUp.find();
-        res.json({ 'standups': standUps });
+ async  deleteStandUp(req, res) {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        try {
+        standups.findOne({standup_id: req.body.standup.id });
 
+        } catch (e) {
+            return res.status(404).json({ message: "StandUp id not found!", errors: e.message });
+        }
+        res.json({message: "Successfully deleted"});
     }
 
-        // standup responses
+
     async standUpResponses (req, res) {
         let responses = null;
         if(req.query.standup_id) {
@@ -48,7 +45,7 @@ class StandUpController {
 
     }
 
-        // update standup
+
     async updateStandUp (req, res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
